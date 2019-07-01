@@ -1,3 +1,5 @@
+'use strict';
+
 const DIV = 'div';
 const PARAGRAPH = 'p';
 const BUTTON = 'button';
