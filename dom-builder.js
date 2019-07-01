@@ -43,6 +43,12 @@ function domBuilder() {
             }
         }
 
+        // Style
+        const style = options && options.style;
+        if (style) {
+            newElem.setAttribute('style', style);
+        }
+
         // Content
         if (content) {
             newElem.appendChild(createContent(content));
