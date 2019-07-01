@@ -3,7 +3,7 @@
 const DIV = 'div';
 const PARAGRAPH = 'p';
 const BUTTON = 'button';
-
+const LINK = 'a';
 
 function domBuilder() {
     const createdElements = new Map();
@@ -19,6 +19,10 @@ function domBuilder() {
 
     function createButton(content = null, options = null) {
         return createElement(BUTTON, content, options);
+    }
+
+    function createLink(content = null, options = null) {
+        return createElement(LINK, content, options);
     }
 
     // Generic
@@ -56,6 +60,10 @@ function domBuilder() {
             newElem.appendChild(createContent(content));
         }
 
+        // Links
+        const href = options && options.href;
+        newElem.href = href ? href : '#';
+
         // Count created elements
         countCreatedElements(type);
 
@@ -80,5 +88,6 @@ function domBuilder() {
         createDiv,
         createParagraph,
         createButton,
+        createLink,
     };
 }
