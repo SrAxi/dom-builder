@@ -4,7 +4,35 @@
     <meta charset="UTF-8">
     <title>Testing DOM-builder</title>
 
-    <script src="../dom-builder.js" async></script>
+    <script src="../dom-builder.js"></script>
 </head>
 <body></body>
 </html>
+
+<script type="application/javascript">
+    const db = domBuilder();
+
+    // First div creation
+    const myP = db.createParagraph('Hi there! I\'m a Paragraph inside a DIV');
+    const myDiv = db.createDiv(myP, {
+        id: 'myFirstDiv',
+        events: {
+            ondblclick: () => alert('I double clicked this'),
+        }
+    });
+    db.addElement(myDiv);
+
+    // Second div creation
+    const myDiv2 = db.createDiv('My Second DIV');
+    db.addElement(myDiv2, {
+        inside: '#myFirstDiv'
+    });
+
+    // Button div creation
+    const myButton = db.createButton('Click me!', {
+        events: {
+            onclick: () => alert('I clicked this'),
+        },
+    });
+    db.addElement(myButton);
+</script>

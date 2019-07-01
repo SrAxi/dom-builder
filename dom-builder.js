@@ -15,6 +15,10 @@ function domBuilder() {
         return createElement(PARAGRAPH, content, options);
     }
 
+    function createButton(content = null, options = null) {
+        return createElement(BUTTON, content, options);
+    }
+
     // Generic
     function addElement(element, options = null) {
         const insideElement = document.querySelector(options && options.inside) || document.body;
@@ -28,6 +32,16 @@ function domBuilder() {
         const currentTypeCount = createdElements.get(type);
         const generatedId = `${type}${currentTypeCount + 1 || 1}`;
         newElem.setAttribute('id', `${options && options.id || generatedId}`);
+
+        // Events
+        const events = options && options.events;
+        if (events) {
+            for (const event in events) {
+                if (events.hasOwnProperty(event)) {
+                    newElem[event] = events[event];
+                }
+            }
+        }
 
         // Content
         if (content) {
@@ -57,22 +71,6 @@ function domBuilder() {
         addElement,
         createDiv,
         createParagraph,
+        createButton,
     };
 }
-
-
-// TEST USAGE
-const db = domBuilder();
-
-const myP = db.createParagraph('Hi there! I\'m a Paragraph inside a DIV');
-const myDiv = db.createDiv(myP, {
-    id: 'myFirstDiv'
-});
-
-
-db.addElement(myDiv);
-
-const myDiv2 = db.createDiv('My Second DIV');
-db.addElement(myDiv2, {
-    inside: '#myFirstDiv'
-});
