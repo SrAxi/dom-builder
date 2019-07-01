@@ -6,12 +6,14 @@ Simple DOM renderer with Vanilla JS
 - `createDiv()`: Creates a `div` DOM element
 - `createParagraph()`: Creates a `p` DOM element
 - `createButton()`: Creates a `button` DOM element
+- `createLink()`: Creates a `a` DOM element
 
 ### Options
 - `id`: The `id` of the created element
 - `inside`: The query parameter where the element will be inserted, default is `body`
 - `events`: The events to be added to the created element
 - `style`: The style to be added to the created element
+- `href`: The `href` to be added to the created `a` element
 
 
 ------
@@ -45,5 +47,12 @@ Simple DOM renderer with Vanilla JS
         style: 'color: red; background: black;'
     });
     db.addElement(myButton);
+
+    // Link div creation
+    const myLink = db.createLink('I\'m a link!!', {
+        href:'#myFirstDiv',
+        style: 'color: #0366d6; text-decoration: none;'
+    });
+    db.addElement(myLink);
 </script>
 ```
