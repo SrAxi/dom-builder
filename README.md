@@ -1,6 +1,8 @@
 # dom-builder
 Simple DOM renderer with Vanilla JS
 
+### **!!IMPORTANT:!!** This project has been abandoned in this repo and is being continued here: https://github.com/SrAxi/better-dom-builder
+
 ### API
 - `addElement()`: Adds the element to the DOM
 - `createDiv()`: Creates a `div` DOM element
